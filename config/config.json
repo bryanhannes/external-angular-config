@@ -1,0 +1,4 @@
+{
+  "environment": "TEST",
+  "randomVariable": "I am not the default variable"
+}

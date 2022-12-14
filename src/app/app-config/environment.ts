@@ -1,12 +1,6 @@
-export class AppEnvironment {
+export class Environment {
   public readonly environment: string = '';
   public readonly randomVariable: string = '';
-
-  constructor(defaults?: Record<string, unknown>) {
-    if (defaults) {
-      this.setProperties(defaults);
-    }
-  }
 
   public populate(config: Record<string, unknown>): void {
     this.setProperties(config);
@@ -16,7 +10,7 @@ export class AppEnvironment {
     Object.keys(keyValueObject || []).forEach((key: string) => {
       if (this.isAllowed(key)) {
         // @ts-ignore
-        this[key] = keyValueObject;
+        this[key] = keyValueObject[key];
       }
     });
   }

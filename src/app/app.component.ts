@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Environment } from './app-config/environment';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <div>Environment: {{ environment.environment }}</div>
+    <div>Random Variable: {{ environment.randomVariable }}</div>
+  `,
 })
 export class AppComponent {
+  public readonly environment = inject(Environment);
 }

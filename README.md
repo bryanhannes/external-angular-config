@@ -1,27 +1,19 @@
-# ExternalConfig
+# External config in Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+This repo is used in <<insert blog post here>> to show how you can externalise your Angular configuration.
 
-## Development server
+#
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Building the Docker image
 
-## Code scaffolding
+```CLI
+docker build -t external-config-angular .
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Running the Docker image
 
-## Build
+TIP: Change the path according to your local file structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```CLI
+docker run  -p 8080:8080 -v /Users/bryan/demos/external-config/config:/usr/share/nginx/html/assets/config external-config-angular
+```

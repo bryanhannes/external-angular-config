@@ -1,9 +1,25 @@
-import {AppComponent} from './app/app.component';
-import {HttpClientModule} from '@angular/common/http';
-import {importProvidersFrom} from '@angular/core';
-import {bootstrapApplication} from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { APP_INITIALIZER, importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { ConfigurationService } from './app/app-config/configuration.service';
+import { Environment } from './app/app-config/environment';
 
+function loadExternalConfig(appConfig: ConfigurationService) {
+  return () => {
+    return appConfig.loadConfig();
+  };
+}
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(HttpClientModule)]
-}).catch(err => console.error(err));
+  providers: [
+    importProvidersFrom(HttpClientModule),
+    Environment,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: loadExternalConfig,
+      deps: [ConfigurationService],
+      multi: true,
+    },
+  ],
+}).catch((err) => console.error(err));

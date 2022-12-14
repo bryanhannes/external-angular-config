@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { AppEnvironment } from './app-environment';
+import { Environment } from './environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AppConfigService {
-  private readonly environment = inject(AppEnvironment);
+export class ConfigurationService {
+  private readonly environment = inject(Environment);
   private readonly http = inject(HttpClient);
 
   public loadConfig(): Observable<void> {
