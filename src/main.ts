@@ -2,8 +2,8 @@ import { AppComponent } from './app/app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { ConfigurationService } from './app/app-config/configuration.service';
-import { Environment } from './app/app-config/environment';
+import { ConfigurationService } from './app/configuration/configuration.service';
+import { Environment } from './app/configuration/environment';
 
 function loadExternalConfig(appConfig: ConfigurationService) {
   return () => {
