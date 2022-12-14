@@ -8,14 +8,14 @@ export class Environment {
 
   private setProperties(keyValueObject: Record<string, unknown>) {
     Object.keys(keyValueObject || []).forEach((key: string) => {
-      if (this.isAllowed(key)) {
+      if (this.isPropertyAllowed(key)) {
         // @ts-ignore
         this[key] = keyValueObject[key];
       }
     });
   }
 
-  private isAllowed(propertyName: string): boolean {
+  private isPropertyAllowed(propertyName: string): boolean {
     // @ts-ignore
     return this.hasOwnProperty(propertyName) && typeof this[propertyName] !== 'function';
   }
